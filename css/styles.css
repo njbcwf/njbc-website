@@ -72,16 +72,7 @@ nav.dark .nav-logo-text { color: var(--white); }
 nav.dark .nav-logo-sub  { color: var(--gold); }
 
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-.nav-logo-mark {
-  width: 36px; height: 36px; border-radius: 4px; background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--gold);
-}
-/* Star icon variant used on homepage */
-.nav-logo-icon {
-  width: 40px; height: 40px; background: var(--gold);
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
+.nav-logo img { height: 48px; width: auto; display: block; }
 .nav-logo-text { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--navy); letter-spacing: 0.05em; line-height: 1.2; }
 .nav-logo-sub  { font-family: var(--sans); font-size: 0.62rem; font-weight: 300; letter-spacing: 0.18em; color: var(--muted); display: block; text-transform: uppercase; }
 
