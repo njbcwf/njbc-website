@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Us — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header.dark::before { content: 'JOIN'; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 24px; margin-top: 44px; }
+    .step-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; position: relative; }
+    .step-num { position: absolute; top: -16px; left: 24px; width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; margin-top: 8px; }
+    .step-desc { font-size: 0.87rem; line-height: 1.75; color: var(--muted); }
+
+    /* Visitor form */
+    .visitor-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 11px 15px; border: 1px solid var(--border); border-radius: 4px;
+      font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--text);
+      background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,0.1); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .check-row { display: flex; align-items: flex-start; gap: 10px; }
+    .check-row input[type=checkbox] { margin-top: 3px; accent-color: var(--gold); }
+    .check-row label { font-size: 0.85rem; color: var(--muted); line-height: 1.55; cursor: pointer; }
+    .form-success { display: none; padding: 18px 20px; background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.3); border-radius: 6px; color: #1a7a45; font-size: 0.88rem; }
+    .form-success.show { display: block; }
+
+    /* FAQ mini */
+    .faq-mini { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 36px; }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--navy); gap: 12px; }
+    .faq-q:last-child { border-bottom: none; }
+    .faq-q:hover { background: var(--light); }
+    .faq-arrow { color: var(--gold); transition: transform 0.3s; font-size: 1.1rem; flex-shrink: 0; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; padding: 0 24px; font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 18px; }
+    .faq-item.open .faq-arrow { transform: rotate(90deg); }
+
+    @media (max-width: 860px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header dark">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Join Us</div>
+  <h1>You're <em>Welcome</em> Here</h1>
+  <p>We are a church that shows the love of Christ to everyone we meet. Wherever you are on your journey — you have a home at New Jerusalem Baptist Church.</p>
+</div>
+
+<!-- WELCOMING MESSAGE -->
+<section class="section section-cream">
+  <div class="two-col reveal">
+    <div>
+      <span class="tag">Welcoming You Home</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">A Place to <em>Belong</em></h2>
+      <p class="body-text">Whether you're exploring faith for the first time, returning to church after a long absence, or looking for a new church home — we believe you're here for a reason. There is a seat saved for you at New Jerusalem.</p>
+      <p class="body-text" style="margin-top:14px;">You don't have to have it all together. You don't have to know all the songs. You don't have to dress a certain way. Just come as you are, and let God meet you here.</p>
+    </div>
+    <div class="scripture-block reveal" style="transition-delay:0.12s">
+      <p>"Come to me, all you who are weary and burdened, and I will give you rest."</p>
+      <cite>— Matthew 11:28</cite>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section section-alt">
+  <div class="reveal">
+    <span class="tag">Getting Connected</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">How to Get <em>Plugged In</em></h2>
+    <p class="body-text">Joining the NJBC family is simple. Here are four easy steps to get connected and start growing.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal" style="transition-delay:0.05s">
+      <div class="step-num">1</div>
+      <div class="step-title">Visit on a Sunday</div>
+      <div class="step-desc">Join us for Sunday School at 9:30 AM or Morning Worship at 11:00 AM. Our greeters will welcome you at the door — no appointment needed.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay:0.1s">
+      <div class="step-num">2</div>
+      <div class="step-title">Meet the Team</div>
+      <div class="step-desc">After service, introduce yourself to our greeters or any minister. We'd love to meet you, answer questions, and help you find your place here.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay:0.15s">
+      <div class="step-num">3</div>
+      <div class="step-title">Explore a Ministry</div>
+      <div class="step-desc">Browse our 15+ active ministries and find one that matches your gifts and passions — from youth to seniors, worship to community outreach.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay:0.2s">
+      <div class="step-num">4</div>
+      <div class="step-title">Join the Family</div>
+      <div class="step-desc">When you're ready, express your desire to become a member. Our pastoral team will walk you through what membership at NJBC means and looks like.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISITOR FORM -->
+<section class="section">
+  <div class="two-col top">
+    <div class="reveal">
+      <span class="tag">Plan Your Visit</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Let Us Know <em>You're Coming</em></h2>
+      <p class="body-text" style="margin-bottom:28px;">Fill out this form and we'll make sure someone is ready to welcome you when you arrive. No pressure — just a warm hello.</p>
+
+      <div id="joinSuccess" class="form-success">
+        ✅ We can't wait to meet you! A member of our team will be in touch. God bless you.
+      </div>
+
+      <form class="visitor-form" id="joinForm" onsubmit="handleJoin(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="jFirst">First Name *</label>
+            <input type="text" id="jFirst" required placeholder="First name" />
+          </div>
+          <div class="form-group">
+            <label for="jLast">Last Name</label>
+            <input type="text" id="jLast" placeholder="Last name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="jEmail">Email Address *</label>
+          <input type="email" id="jEmail" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="jPhone">Phone Number</label>
+          <input type="tel" id="jPhone" placeholder="(940) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="jReason">Why are you reaching out?</label>
+          <select id="jReason">
+            <option value="">Select one...</option>
+            <option>First-time visitor</option>
+            <option>Returning to church</option>
+            <option>Looking for a church home</option>
+            <option>Interested in membership</option>
+            <option>Interested in a ministry</option>
+            <option>Just want more info</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="jNotes">Anything you'd like us to know?</label>
+          <textarea id="jNotes" placeholder="Questions, special needs, prayer requests — whatever's on your heart..."></textarea>
+        </div>
+        <div class="check-row">
+          <input type="checkbox" id="jEmail2" />
+          <label for="jEmail2">I'd like to receive email updates and announcements from NJBC</label>
+        </div>
+        <button type="submit" class="btn btn-gold" style="align-self:flex-start;">I'm Coming →</button>
+      </form>
+    </div>
+
+    <!-- FAQ -->
+    <div class="reveal" style="transition-delay:0.12s">
+      <span class="tag">First-Time Visitor FAQ</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">What to <em>Expect</em></h2>
+
+      <div class="faq-mini">
+        <div class="faq-item">
+          <button class="faq-q">What should I wear? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Come as you are. There is no dress code at New Jerusalem. Some members dress formally, others casually — all are welcome exactly as they are.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long is the service? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Morning Worship typically runs about 90 minutes. Sunday School at 9:30 AM is about 45 minutes. You're welcome to come to one or both.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there childcare available? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Yes! A nursery is available for newborns through age 5, and Children's Church is offered for ages 6–11 during the 11 AM service.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Where should I park? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Parking is available at 1420 Borton St, Wichita Falls, TX 76306. Our greeters and parking team will help you find a spot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to give money to attend? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Absolutely not. Giving is an act of worship for members who choose to participate — never a requirement for visitors or guests. Come and be blessed.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I watch online first? <span class="faq-arrow">›</span></button>
+          <div class="faq-a">Yes! We stream Sunday Morning Worship live at 11 AM on YouTube at <a href="http://www.youtube.com/@NJBCWF" target="_blank" style="color:var(--gold);">youtube.com/@NJBCWF</a>. Watch from home before visiting in person.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-navy">
+  <div class="reveal" style="text-align:center;max-width:620px;margin:0 auto;">
+    <span class="tag">Our Mission</span>
+    <div class="gold-bar" style="margin:0 auto 20px;"></div>
+    <h2 class="section-title" style="text-align:center;">To Love People and<br>Let <em>GOD</em> Save Them</h2>
+    <p class="body-text" style="margin:0 auto;text-align:center;margin-top:10px;">That's it. That's what we're about. Come experience it for yourself at New Jerusalem Baptist Church in Wichita Falls, Texas.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
+      <a href="contact.html" class="btn btn-gold">Contact Us</a>
+      <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="btn btn-outline-light">▶ Watch Online</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+<script>
+  function handleJoin(e) {
+    e.preventDefault();
+    document.getElementById('joinSuccess').classList.add('show');
+    document.getElementById('joinForm').reset();
+    document.getElementById('joinSuccess').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const was = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!was) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

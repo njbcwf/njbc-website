@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Give — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #0f1f3a;
+      --navy2: #162848;
+      --gold:  #c9a227;
+      --gold2: #e8bc3b;
+      --cream: #f9f5ee;
+      --warm:  #f2e9d8;
+      --white: #ffffff;
+      --text:  #1a1a2e;
+      --muted: #5a5a72;
+      --light: #f5f7fa;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 68px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 34px; height: 34px; background: var(--navy); border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700;
+    }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .nav-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.14em; color: var(--muted); display: block; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-give { background: var(--gold) !important; color: var(--navy) !important; padding: 8px 18px; border-radius: 3px; font-weight: 600 !important; }
+    .nav-give:hover { background: var(--gold2) !important; }
+    @media (max-width: 760px) { .nav-links { display: none; } }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 140px 8vw 80px;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: 'GIVE';
+      position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 700; color: rgba(201,162,39,0.07);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+    .breadcrumb { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,162,39,0.7); font-weight: 600; margin-bottom: 16px; }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 700; color: var(--white); line-height: 1.05; max-width: 600px; }
+    .page-header h1 em { font-style: italic; color: var(--gold); }
+    .page-header p { margin-top: 20px; font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 520px; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 80px 8vw; }
+    .section-alt { background: var(--light); }
+    .section-cream { background: var(--cream); }
+    .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--navy); line-height: 1.1; margin-bottom: 18px; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .gold-bar { width: 36px; height: 2px; background: var(--gold); margin-bottom: 18px; border-radius: 2px; }
+    .body-text { font-size: 1rem; line-height: 1.85; color: var(--muted); max-width: 580px; }
+
+    /* ── GIVE OPTIONS ── */
+    .give-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .give-card {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .give-card:hover { box-shadow: 0 8px 36px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .give-card.featured {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .give-card.featured .give-card-title { color: var(--white); }
+    .give-card.featured .give-card-desc { color: rgba(255,255,255,0.6); }
+    .give-card-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .give-card-icon { font-size: 2rem; margin-bottom: 16px; }
+    .give-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .give-card-desc { font-size: 0.88rem; line-height: 1.75; color: var(--muted); margin-bottom: 24px; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold2); }
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.2);
+      color: var(--navy);
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline-light {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      padding: 12px 28px;
+      border-radius: 3px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── GIVING INFO ── */
+    .giving-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .info-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 24px; }
+    .info-item { display: flex; gap: 16px; align-items: flex-start; }
+    .info-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--cream);
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,39,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .info-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .info-value { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
+    .info-value a { color: var(--gold); text-decoration: none; }
+    .info-value a:hover { text-decoration: underline; }
+
+    /* ── SCRIPTURE ACCENT ── */
+    .scripture-banner {
+      background: var(--cream);
+      border-top: 3px solid var(--gold);
+      padding: 56px 8vw;
+      text-align: center;
+    }
+    .scripture-banner blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .scripture-banner cite {
+      display: block;
+      margin-top: 18px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── IMPACT STATS ── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    .impact-stat {
+      background: var(--white);
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .impact-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .impact-number span { color: var(--gold); }
+    .impact-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 28px;
+      font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600;
+      color: var(--navy); gap: 16px;
+    }
+    .faq-question:hover { background: var(--light); }
+    .faq-arrow { font-size: 1.1rem; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s;
+      padding: 0 28px;
+      font-size: 0.9rem; line-height: 1.8; color: var(--muted);
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 28px 22px; }
+    .faq-item.open .faq-arrow { transform: rotate(90deg); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 32px 6vw;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      line-height: 2;
+      border-top: 1px solid rgba(201,162,39,0.12);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .giving-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">NJ</div>
+    <div class="nav-logo-text">
+      New Jerusalem
+      <span class="nav-logo-sub">Baptist Church</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="give.html" class="nav-give">Give</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Give</div>
+  <h1>Support the<br><em>Mission</em></h1>
+  <p>Your generosity makes it possible for New Jerusalem to love people, serve the community, and spread the Gospel across Wichita Falls and beyond.</p>
+</div>
+
+<!-- SCRIPTURE BANNER -->
+<div class="scripture-banner">
+  <blockquote>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</blockquote>
+  <cite>— 2 Corinthians 9:7</cite>
+</div>
+
+<!-- GIVE OPTIONS -->
+<section class="section">
+  <div class="reveal">
+    <div class="tag">Ways to Give</div>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Choose How You'd<br>Like to <em>Give</em></h2>
+    <p class="body-text">Every gift — large or small — makes a real difference in the life of this church and the community it serves.</p>
+  </div>
+
+  <div class="give-grid">
+
+    <div class="give-card featured reveal" style="transition-delay:0.05s">
+      <div class="give-card-badge">Most Popular</div>
+      <div class="give-card-icon">💻</div>
+      <div class="give-card-title">Give Online</div>
+      <div class="give-card-desc">Securely give a one-time or recurring gift from anywhere, anytime. Fast, easy, and available 24/7.</div>
+      <a href="https://www.njbcwf.org/copy-of-donate" target="_blank" class="btn-primary">Give Now →</a>
+    </div>
+
+    <div class="give-card reveal" style="transition-delay:0.1s">
+      <div class="give-card-icon">🏛️</div>
+      <div class="give-card-title">Give in Person</div>
+      <div class="give-card-desc">Drop your offering in the collection during Sunday Morning Worship at 11:00 AM or Sunday School at 9:30 AM.</div>
+      <a href="index.html#contact" class="btn-outline">Get Directions →</a>
+    </div>
+
+    <div class="give-card reveal" style="transition-delay:0.15s">
+      <div class="give-card-icon">✉️</div>
+      <div class="give-card-title">Give by Mail</div>
+      <div class="give-card-desc">Send a check made payable to <strong>New Jerusalem Baptist Church</strong> to our address on Borton Street.</div>
+      <div style="margin-top:16px;font-size:0.83rem;color:var(--muted);line-height:1.7;">
+        1420 Borton St<br>Wichita Falls, TX 76306
+      </div>
+    </div>
+
+    <div class="give-card reveal" style="transition-delay:0.2s">
+      <div class="give-card-icon">📱</div>
+      <div class="give-card-title">Text to Give</div>
+      <div class="give-card-desc">A quick and easy way to give from your phone. Text the amount and fund to our giving number — instructions available at the church office.</div>
+      <a href="tel:9407672067" class="btn-outline">Call the Office →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GIVING INFO + IMPACT -->
+<section class="section section-alt">
+  <div class="giving-layout">
+    <div class="reveal">
+      <div class="tag">Where Your Gift Goes</div>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Every Dollar<br><em>Makes an Impact</em></h2>
+      <p class="body-text">Your tithes and offerings fund the ministries, outreach, and operations that keep New Jerusalem serving Wichita Falls every single week.</p>
+
+      <ul class="info-list">
+        <li class="info-item">
+          <div class="info-icon">⛪</div>
+          <div>
+            <div class="info-label">Church Operations</div>
+            <div class="info-value">Facility maintenance, utilities, and staff — keeping the doors open every week.</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">🌱</div>
+          <div>
+            <div class="info-label">Community Outreach</div>
+            <div class="info-value">Operation Fresh Start, Communities on the Move, and our food and transportation ministries.</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">🌟</div>
+          <div>
+            <div class="info-label">Youth & Family</div>
+            <div class="info-value">IMPACT & 18/25 ministry programs, events, and resources for the next generation.</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">📖</div>
+          <div>
+            <div class="info-label">Ministry Programs</div>
+            <div class="info-value">Funding all 15+ active ministries, from Grief support to Culinary Arts to Creative Arts.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.12s">
+      <div class="tag">Our Impact</div>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Faithful<br><em>Stewardship</em></h2>
+      <p class="body-text">We are committed to being faithful stewards of every gift entrusted to us. Here's a snapshot of what your generosity makes possible.</p>
+
+      <div class="impact-grid">
+        <div class="impact-stat">
+          <div class="impact-number">15<span>+</span></div>
+          <div class="impact-label">Active Ministries</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">3</div>
+          <div class="impact-label">Services per Week</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">52</div>
+          <div class="impact-label">Weeks of Service</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-number">∞</div>
+          <div class="impact-label">Lives Touched</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px; padding:24px 28px; background:var(--white); border-radius:6px; border:1px solid rgba(0,0,0,0.07);">
+        <div class="info-label" style="margin-bottom:8px;">Questions about giving?</div>
+        <div class="info-value">
+          Contact the church office at <a href="tel:9407672067">(940) 767-2067</a> or email <a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a>. We're happy to help.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-cream">
+  <div class="reveal">
+    <div class="tag">Common Questions</div>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Giving <em>FAQ</em></h2>
+  </div>
+
+  <div class="faq-list reveal" style="transition-delay:0.1s;max-width:780px;">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Is my online gift secure?
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-answer">Yes. Our online giving platform uses bank-level encryption to protect your financial information. We never store your card details on our servers.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I set up a recurring gift?
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-answer">Absolutely. When giving online, you can choose to make your gift weekly, bi-weekly, or monthly. Recurring gifts help us plan and serve our community more consistently.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Will I receive a tax receipt?
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-answer">Yes. New Jerusalem Baptist Church is a registered 501(c)(3) nonprofit organization. All gifts are tax-deductible. You'll receive a receipt for online gifts immediately by email, and annual giving statements are available upon request.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I designate my gift to a specific ministry?
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-answer">Yes. If you'd like your gift directed toward a specific ministry or fund, please note it in the memo field when giving online, on your check, or by calling the church office.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What is a tithe?
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-answer">A tithe is a biblical principle of giving 10% of your income to God through the local church. It's an act of worship and trust — acknowledging that everything we have belongs to God. We also welcome offerings above the tithe for special purposes and outreach.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.8);">New Jerusalem Baptist Church</strong><br>
+  1420 Borton St · Wichita Falls, TX 76306 · <a href="tel:9407672067">(940) 767-2067</a> · <a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a><br>
+  <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="about.html">About</a> &nbsp;·&nbsp; <a href="events.html">Events</a> &nbsp;·&nbsp; <a href="sermons.html">Sermons</a> &nbsp;·&nbsp; <a href="give.html">Give</a><br><br>
+  © 2025 New Jerusalem Baptist Church. All Rights Reserved.
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

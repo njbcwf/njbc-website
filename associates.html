@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Associates — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header::before { content: 'TEAM'; }
+
+    .associates-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px;
+      margin-top: 48px;
+    }
+    .associate-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; transition: box-shadow 0.2s, transform 0.2s;
+      text-align: center;
+    }
+    .associate-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .associate-photo {
+      width: 100%; aspect-ratio: 3/4; max-height: 280px; background: var(--light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: var(--gold-border); overflow: hidden;
+    }
+    .associate-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .associate-body { padding: 24px 20px; }
+    .associate-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .associate-role { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .associate-bio  { font-size: 0.83rem; line-height: 1.7; color: var(--muted); }
+
+    .placeholder-notice {
+      background: var(--warm); border: 1px solid var(--gold-border); border-radius: 6px;
+      padding: 20px 24px; margin-bottom: 48px; font-size: 0.88rem; color: var(--muted);
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .placeholder-notice span { font-size: 1.2rem; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <a href="about.html">About</a> / Associates</div>
+  <h1>Associate <em>Ministers</em></h1>
+  <p>Meet the dedicated ministers and leaders who serve alongside our Senior Pastor to shepherd the New Jerusalem congregation.</p>
+</div>
+
+<section class="section">
+  <div class="placeholder-notice reveal">
+    <span>✏️</span>
+    <div>To update this page, add your ministers' names, photos, and bios to the cards below. Each card has a photo slot, name, role, and bio field — just replace the placeholder text and image paths.</div>
+  </div>
+
+  <div class="reveal">
+    <span class="tag">Our Leadership Team</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Those Who <em>Serve</em> With Us</h2>
+    <p class="body-text">Alongside Senior Pastor Rev. Anthony Phillips, our associate ministers and ministry leaders pour their gifts into this congregation every week — in preaching, teaching, counseling, and service.</p>
+  </div>
+
+  <div class="associates-grid">
+
+    <div class="associate-card reveal" style="transition-delay:0.05s">
+      <div class="associate-photo">✝</div>
+      <div class="associate-body">
+        <div class="associate-name">Associate Minister</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add this minister's bio here — their calling, areas of service, and heart for the congregation.</div>
+      </div>
+    </div>
+
+    <div class="associate-card reveal" style="transition-delay:0.1s">
+      <div class="associate-photo">🎵</div>
+      <div class="associate-body">
+        <div class="associate-name">Minister of Music</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add the Minister of Music's bio here — their musical background, ministry philosophy, and service to worship.</div>
+      </div>
+    </div>
+
+    <div class="associate-card reveal" style="transition-delay:0.15s">
+      <div class="associate-photo">📖</div>
+      <div class="associate-body">
+        <div class="associate-name">Minister of Education</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add this minister's bio here — their role in Sunday School, Bible Study, and discipleship at NJBC.</div>
+      </div>
+    </div>
+
+    <div class="associate-card reveal" style="transition-delay:0.2s">
+      <div class="associate-photo">🌟</div>
+      <div class="associate-body">
+        <div class="associate-name">Youth Director</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add the Youth Director's bio here — their passion for the next generation and work with the IMPACT &amp; 18/25 ministry.</div>
+      </div>
+    </div>
+
+    <div class="associate-card reveal" style="transition-delay:0.25s">
+      <div class="associate-photo">🤝</div>
+      <div class="associate-body">
+        <div class="associate-name">Deacon Board Chair</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add this leader's bio here — their role leading the deacon ministry and supporting the pastoral team.</div>
+      </div>
+    </div>
+
+    <div class="associate-card reveal" style="transition-delay:0.3s">
+      <div class="associate-photo">💛</div>
+      <div class="associate-body">
+        <div class="associate-name">Church Administrator</div>
+        <div class="associate-role">Add Name Here</div>
+        <div class="associate-bio">Add the administrator's bio here — their role in keeping the church running smoothly day to day.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="two-col reveal">
+    <div>
+      <span class="tag">Serve With Us</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Called to <em>Lead?</em></h2>
+      <p class="body-text">If you feel God calling you into ministry leadership, we want to talk with you. New Jerusalem is always looking to equip and raise up servant leaders from within our congregation.</p>
+      <a href="contact.html" class="btn btn-gold" style="margin-top:24px;">Get in Touch</a>
+    </div>
+    <div class="scripture-block">
+      <p>"And he gave some, apostles; and some, prophets; and some, evangelists; and some, pastors and teachers; for the perfecting of the saints, for the work of the ministry, for the edifying of the body of Christ."</p>
+      <cite>— Ephesians 4:11–12</cite>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+</body>
+</html>

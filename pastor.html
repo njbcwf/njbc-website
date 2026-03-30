@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Pastor — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header::before { content: 'PASTOR'; }
+
+    .pastor-layout {
+      display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start;
+    }
+    .pastor-photo-wrap { position: sticky; top: 96px; }
+    .pastor-photo {
+      width: 100%; aspect-ratio: 3/4; background: var(--navy2); border-radius: 6px;
+      overflow: hidden; position: relative;
+    }
+    .pastor-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .pastor-photo::after { content: ''; position: absolute; inset: 0; border: 2px solid var(--gold-border); border-radius: 6px; pointer-events: none; }
+    .pastor-caption {
+      margin-top: 16px; text-align: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy);
+    }
+    .pastor-caption span { display: block; font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+
+    .pastor-bio p { font-size: 0.97rem; line-height: 1.9; color: var(--muted); margin-bottom: 20px; }
+    .pastor-bio p:last-child { margin-bottom: 0; }
+
+    .bio-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0; }
+    .bio-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border: 1px solid var(--gold-border);
+      border-radius: 50px; font-size: 0.75rem; font-weight: 500; color: var(--muted);
+      background: var(--light);
+    }
+    .bio-pill span { color: var(--gold); font-size: 1rem; }
+
+    .legacy-box {
+      background: var(--navy); border-radius: 8px; padding: 36px 32px; margin-top: 40px;
+    }
+    .legacy-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .legacy-box p  { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.6); }
+    .legacy-badge  { display: inline-block; background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.3); color: var(--gold); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 10px; border-radius: 50px; margin-bottom: 12px; }
+
+    @media (max-width: 860px) {
+      .pastor-layout { grid-template-columns: 1fr; }
+      .pastor-photo-wrap { position: static; max-width: 280px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <a href="about.html">About</a> / Pastor</div>
+  <h1>Our <em>Pastor</em></h1>
+  <p>Meet the shepherd God has placed over New Jerusalem Baptist Church — Rev. Anthony Phillips.</p>
+</div>
+
+<section class="section">
+  <div class="pastor-layout">
+
+    <div class="pastor-photo-wrap reveal">
+      <div class="pastor-photo">
+        <img
+          src="https://static.wixstatic.com/media/01a251_19b96164b4f94098ade74cf57a1fcdd1~mv2.png"
+          alt="Rev. Anthony Phillips, Senior Pastor"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="pastor-caption">
+        Rev. Anthony Phillips
+        <span>Senior Pastor</span>
+      </div>
+
+      <div class="bio-pills" style="margin-top:20px;justify-content:center;">
+        <div class="bio-pill"><span>📍</span> Wichita Falls, TX</div>
+        <div class="bio-pill"><span>📅</span> Called October 2025</div>
+        <div class="bio-pill"><span>✝</span> Ordained 2009</div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
+        <a href="contact.html" class="btn btn-gold" style="text-align:center;">Contact the Church</a>
+        <a href="sermons.html" class="btn btn-outline" style="text-align:center;">Watch Sermons</a>
+      </div>
+    </div>
+
+    <div class="pastor-bio reveal" style="transition-delay:0.12s">
+      <span class="tag">Senior Pastor</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title" style="margin-bottom:24px;">Rev. Anthony <em>Phillips</em></h2>
+
+      <p>Rev. Anthony Phillips is a servant leader, Bible teacher, and community builder with more than sixteen years of dedicated ministry experience. A native of Vidalia, Georgia, he came to faith in Christ in July 1990 and was both saved and baptized that same year.</p>
+
+      <p>God later confirmed his calling to preach, and on July 19, 2009, he was licensed and later ordained at Shiloh Baptist Church in Plano, Texas. Rev. Phillips has served faithfully in multiple pastoral roles, with each season forming a compassionate shepherd and steady leader. His ministry journey spans preaching, teaching, counseling, and organizing youth and adult discipleship across Texas and Georgia.</p>
+
+      <p>He has served as Associate Minister, Youth Pastor, and Assistant Pastor, equipping believers and strengthening church ministries. In October 2025, New Jerusalem Baptist Church extended the call for him to serve as Senior Pastor. He now leads with biblical conviction, Spirit-led vision, and humility — devoted to expository preaching, pastoral care, evangelism, and community uplift.</p>
+
+      <div class="scripture-block" style="margin:28px 0;">
+        <p>"Known for expository preaching that combines clarity, warmth, and practical application, Rev. Phillips seeks to walk verse by verse through God's Word, pointing people to Jesus and encouraging believers to live out their faith."</p>
+      </div>
+
+      <p>His pastoral care reflects his heart for all generations — sharing simple truths with children, guiding teens and young adults, walking alongside families, and honoring seniors with patience and compassion. Rev. Phillips is committed to strengthening the church through discipleship, leadership development, and meaningful community engagement.</p>
+
+      <p>His civic involvement has included work with the NAACP, Fellowship of Christian Athletes, and Community Men in Action in Vidalia, where he helped coordinate the city's first-ever MLK Parade. He has partnered with schools, youth organizations, and local leaders to foster unity, mentorship, and spiritual growth across communities in both Texas and Georgia.</p>
+
+      <p>Academically, he is completing a Master of Theology in Pastoral Theology at Andersonville Theological Seminary and holds a Bachelor of Business Administration in Management Information Systems from Midwestern State University. In addition to his pastoral calling, he has extensive professional experience in security governance, compliance, and leadership development.</p>
+
+      <p>Rev. Phillips is joyfully married to his wife, Schlonda, and together they are the proud parents of three adult children: Taikorean, Jacoury, and Damaya. He cherishes family time, music, and serving his community — always striving to lead in the spirit of Christ: serving to serve, not serving to be seen.</p>
+
+      <div class="legacy-box">
+        <div class="legacy-badge">In Loving Memory — Founding Pastor</div>
+        <h3>Honoring the Legacy of Pastor Angus B. Thompson</h3>
+        <p>Rev. Phillips leads New Jerusalem with deep respect for the foundation laid by Founding Pastor Angus B. Thompson. His leadership honors that legacy while boldly guiding this congregation into a faithful, fruitful, future-focused season of ministry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+</body>
+</html>

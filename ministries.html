@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ministries — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header::before { content: 'SERVE'; }
+
+    /* Ministry cards grid */
+    .min-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 20px; margin-top: 44px; }
+    .min-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+      padding: 28px 24px; transition: box-shadow 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .min-card::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:2px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition: transform 0.3s; }
+    .min-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .min-card:hover::after { transform: scaleX(1); }
+    .min-icon  { font-size: 1.6rem; margin-bottom: 12px; }
+    .min-name  { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .min-desc  { font-size: 0.82rem; line-height: 1.7; color: var(--muted); }
+    .min-badge { display: inline-block; margin-top: 10px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 9px; border-radius: 50px; }
+    .badge-community { background: rgba(41,128,185,0.1); color: #2980b9; }
+    .badge-care      { background: rgba(192,57,43,0.1); color: #c0392b; }
+    .badge-worship   { background: rgba(201,162,39,0.12); color: #9a7a1a; }
+    .badge-youth     { background: rgba(39,174,96,0.1); color: #1a7a45; }
+    .badge-family    { background: rgba(142,68,173,0.1); color: #6c3483; }
+
+    /* Schedule */
+    .schedule-wrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 20px; margin-top: 44px; }
+    .day-block { background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .day-header { background: var(--navy); padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+    .day-name { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); }
+    .day-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .day-events { padding: 0; }
+    .day-event { display: flex; gap: 14px; padding: 14px 20px; border-bottom: 1px solid var(--light); align-items: flex-start; }
+    .day-event:last-child { border-bottom: none; }
+    .event-time { font-size: 0.72rem; font-weight: 600; color: var(--gold); white-space: nowrap; min-width: 70px; padding-top: 2px; }
+    .event-name { font-size: 0.88rem; font-weight: 500; color: var(--navy); line-height: 1.4; }
+    .event-note { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Ministries</div>
+  <h1>Our <em>Ministries</em></h1>
+  <p>From youth to seniors, from outreach to creative arts — there is a place for every person to serve and belong at New Jerusalem Baptist Church.</p>
+</div>
+
+<!-- MINISTRIES GRID -->
+<section class="section">
+  <div class="reveal">
+    <span class="tag">Serving Together</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">15+ Active <em>Ministries</em></h2>
+    <p class="body-text">Each ministry at NJBC flows from our core mission — to carry out the mandate of Jesus and love our community in practical, tangible ways.</p>
+  </div>
+
+  <div class="min-grid">
+
+    <div class="min-card reveal" style="transition-delay:0.03s">
+      <div class="min-icon">🌟</div>
+      <div class="min-name">IMPACT &amp; 18/25</div>
+      <div class="min-desc">A dynamic ministry for teens and young adults ages 18–25, building faith, fellowship, and the next generation of leaders in Christ.</div>
+      <span class="min-badge badge-youth">Youth</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.06s">
+      <div class="min-icon">💑</div>
+      <div class="min-name">Couples Ministry</div>
+      <div class="min-desc">Strengthening marriages through biblical principles, community, and intentional fellowship designed to help couples grow together in faith.</div>
+      <span class="min-badge badge-family">Family</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.09s">
+      <div class="min-icon">🦊</div>
+      <div class="min-name">Silver Fox</div>
+      <div class="min-desc">A vibrant ministry for members 55 and older, meeting the 2nd Saturday of each month for fellowship, fun, and faith-building together.</div>
+      <span class="min-badge badge-care">Care</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.12s">
+      <div class="min-icon">🤝</div>
+      <div class="min-name">Greeters Ministry</div>
+      <div class="min-desc">The first face people see at New Jerusalem. Our greeters embody the warmth of Christ and make every visitor and member feel genuinely welcomed.</div>
+      <span class="min-badge badge-worship">Worship</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.15s">
+      <div class="min-icon">🍽️</div>
+      <div class="min-name">Hospitality Ministry</div>
+      <div class="min-desc">Serving the congregation and community through meals, events, and generous acts of care that reflect the love and abundance of God.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.18s">
+      <div class="min-icon">🏘️</div>
+      <div class="min-name">Communities on the Move</div>
+      <div class="min-desc">Actively engaging and uplifting the neighborhoods around us — bringing resources, hope, and the love of Christ directly to our community.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.21s">
+      <div class="min-icon">🚌</div>
+      <div class="min-name">Transportation Ministry</div>
+      <div class="min-desc">Ensuring that no member of the congregation misses worship or a church event simply because they lack a ride. No one left behind.</div>
+      <span class="min-badge badge-care">Care</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.24s">
+      <div class="min-icon">🎗️</div>
+      <div class="min-name">Cancer Survivors Ministry</div>
+      <div class="min-desc">A ministry of hope and healing for cancer survivors and their families, meeting the 2nd Tuesday each month for support, prayer, and community.</div>
+      <span class="min-badge badge-care">Care</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.27s">
+      <div class="min-icon">🕊️</div>
+      <div class="min-name">Grief Ministry</div>
+      <div class="min-desc">Walking alongside members experiencing loss with compassion, prayer, and the comfort only Christ can give. Meets the 3rd Thursday each month.</div>
+      <span class="min-badge badge-care">Care</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.30s">
+      <div class="min-icon">🍳</div>
+      <div class="min-name">Culinary Arts Ministry</div>
+      <div class="min-desc">Sharing God's love through the gift of food — preparing meals for events, outreach, and the nourishment of the church family and community.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.33s">
+      <div class="min-icon">🎨</div>
+      <div class="min-name">Creative Arts Ministry</div>
+      <div class="min-desc">Using artistic gifts — visual art, drama, and creative expression — to glorify God and bring the Gospel to life for the congregation.</div>
+      <span class="min-badge badge-worship">Worship</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.36s">
+      <div class="min-icon">🔥</div>
+      <div class="min-name">Chariots of Fire</div>
+      <div class="min-desc">A ministry of dynamic worship, intercession, and spiritual fire — igniting passion for God in the hearts of the congregation.</div>
+      <span class="min-badge badge-worship">Worship</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.39s">
+      <div class="min-icon">✊</div>
+      <div class="min-name">MLK Symposium</div>
+      <div class="min-desc">Honoring the legacy of Dr. Martin Luther King Jr. through education, advocacy, and community dialogue rooted in Biblical justice.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.42s">
+      <div class="min-icon">🌱</div>
+      <div class="min-name">Operation Fresh Start</div>
+      <div class="min-desc">Rebuilding lives through practical outreach — connecting people with resources, encouragement, and a fresh start grounded in God's grace.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.45s">
+      <div class="min-icon">🥘</div>
+      <div class="min-name">Meals on Wheels &amp; Food Distribution</div>
+      <div class="min-desc">Meeting the physical needs of our neighbors — distributing meals, food, clothing, and health resources on the 4th Saturday each month, 9:30–11:30 AM.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.48s">
+      <div class="min-icon">🎖️</div>
+      <div class="min-name">Veterans Outreach Ministry</div>
+      <div class="min-desc">Honoring and serving those who served — connecting veterans in our congregation and community with support, fellowship, and gratitude. Meets 1st Monday at 6 PM.</div>
+      <span class="min-badge badge-community">Community</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.51s">
+      <div class="min-icon">🙏</div>
+      <div class="min-name">Women's Refuge Ministry</div>
+      <div class="min-desc">A safe space for women to find renewal, sisterhood, and the strength of God — meeting on the 5th Wednesday at 6 PM.</div>
+      <span class="min-badge badge-care">Care</span>
+    </div>
+
+    <div class="min-card reveal" style="transition-delay:0.54s">
+      <div class="min-icon">💪</div>
+      <div class="min-name">Mighty Men of God</div>
+      <div class="min-desc">Building men of faith, integrity, and accountability — meeting alongside Women's Mission on Wednesdays at 6 PM for study and fellowship.</div>
+      <span class="min-badge badge-family">Family</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEEKLY SCHEDULE -->
+<section class="section section-alt">
+  <div class="reveal">
+    <span class="tag">Meetings &amp; Schedule</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Weekly <em>Schedule</em></h2>
+    <p class="body-text">Here is our full weekly ministry schedule. All services and meetings are held at 1420 Borton St, Wichita Falls, TX 76306 unless otherwise noted.</p>
+  </div>
+
+  <div class="schedule-wrap">
+
+    <div class="day-block reveal" style="transition-delay:0.05s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Sunday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">9:30 AM</div><div><div class="event-name">Sunday School</div></div></div>
+        <div class="day-event"><div class="event-time">11:00 AM</div><div><div class="event-name">Morning Worship Service</div><div class="event-note">Nursery available (newborn–5 yrs) · Children's Church (6–11 yrs)</div></div></div>
+        <div class="day-event"><div class="event-time">2nd &amp; 4th</div><div><div class="event-name">IMPACT &amp; 18/25 Service</div><div class="event-note">Currently postponed — check back for updates</div></div></div>
+      </div>
+    </div>
+
+    <div class="day-block reveal" style="transition-delay:0.1s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Monday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">6:00 PM</div><div><div class="event-name">Veterans Outreach Ministry</div><div class="event-note">1st Monday of each month</div></div></div>
+      </div>
+    </div>
+
+    <div class="day-block reveal" style="transition-delay:0.15s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Tuesday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">12:00 PM</div><div><div class="event-name">Cancer Support Ministry</div><div class="event-note">2nd Tuesday of each month</div></div></div>
+      </div>
+    </div>
+
+    <div class="day-block reveal" style="transition-delay:0.2s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Wednesday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">6:00 PM</div><div><div class="event-name">Women's Mission / Mighty Men of God</div></div></div>
+        <div class="day-event"><div class="event-time">6:00 PM</div><div><div class="event-name">Women's Refuge Ministry</div><div class="event-note">5th Wednesday only</div></div></div>
+        <div class="day-event"><div class="event-time">7:00 PM</div><div><div class="event-name">Weekly Bible Study</div></div></div>
+        <div class="day-event"><div class="event-time">8:00 PM</div><div><div class="event-name">Mass Choir Rehearsal</div><div class="event-note">Before 1st and 2nd Sunday</div></div></div>
+      </div>
+    </div>
+
+    <div class="day-block reveal" style="transition-delay:0.25s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Thursday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">5:00 PM</div><div><div class="event-name">Grief Ministry</div><div class="event-note">3rd Thursday of each month</div></div></div>
+      </div>
+    </div>
+
+    <div class="day-block reveal" style="transition-delay:0.3s">
+      <div class="day-header"><div class="day-dot"></div><div class="day-name">Saturday</div></div>
+      <div class="day-events">
+        <div class="day-event"><div class="event-time">10:00 AM</div><div><div class="event-name">Silver Foxes (Ages 55+)</div><div class="event-note">2nd Saturday of each month</div></div></div>
+        <div class="day-event"><div class="event-time">12:00 PM</div><div><div class="event-name">Ushers Monthly Meeting</div><div class="event-note">2nd Saturday of each month</div></div></div>
+        <div class="day-event"><div class="event-time">11:00 AM</div><div><div class="event-name">Youth Choir Rehearsal</div><div class="event-note">3rd Saturday of each month</div></div></div>
+        <div class="day-event"><div class="event-time">9:30–11:30 AM</div><div><div class="event-name">Meals on Wheels &amp; Food / Health / Clothing Distribution</div><div class="event-note">4th Saturday of each month</div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-navy">
+  <div class="two-col reveal">
+    <div>
+      <span class="tag">Get Involved</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Find Your <em>Place</em></h2>
+      <p class="body-text">Every member of this church family has gifts to offer. Whether you love serving, creating, teaching, or caring — there is a ministry here that needs you.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+        <a href="join.html" class="btn btn-gold">Join the Family</a>
+        <a href="contact.html" class="btn btn-outline-light">Ask a Question</a>
+      </div>
+    </div>
+    <div class="scripture-block reveal" style="transition-delay:0.12s;background:rgba(255,255,255,0.05);border-left-color:var(--gold);">
+      <p style="color:rgba(255,255,255,0.85);">"Now there are varieties of gifts, but the same Spirit; and there are varieties of service, but the same Lord; and there are varieties of activities, but it is the same God who empowers them all in everyone."</p>
+      <cite>— 1 Corinthians 12:4–6</cite>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+</body>
+</html>

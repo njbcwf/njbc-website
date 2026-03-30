@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #0f1f3a;
+      --navy2: #162848;
+      --gold:  #c9a227;
+      --gold2: #e8bc3b;
+      --cream: #f9f5ee;
+      --warm:  #f2e9d8;
+      --white: #ffffff;
+      --text:  #1a1a2e;
+      --muted: #5a5a72;
+      --light: #f5f7fa;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 68px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 34px; height: 34px;
+      background: var(--navy);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .nav-logo-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      display: block;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-give {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 8px 18px;
+      border-radius: 3px;
+      font-weight: 600 !important;
+    }
+    .nav-give:hover { background: var(--gold2) !important; }
+    @media (max-width: 760px) { .nav-links { display: none; } }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 140px 8vw 80px;
+      background: var(--light);
+      border-bottom: 1px solid rgba(201,162,39,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: 'ABOUT';
+      position: absolute;
+      right: 6vw; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(6rem, 16vw, 14rem);
+      font-weight: 700;
+      color: rgba(201,162,39,0.07);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .breadcrumb {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.05;
+      max-width: 600px;
+    }
+    .page-header h1 em { font-style: italic; color: var(--gold); }
+    .page-header p {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    /* ── SECTION UTILITY ── */
+    .section { padding: 80px 8vw; }
+    .section-alt { background: var(--light); }
+    .section-cream { background: var(--cream); }
+
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .gold-bar { width: 36px; height: 2px; background: var(--gold); margin-bottom: 18px; border-radius: 2px; }
+    .body-text {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    /* ── MISSION ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .mission-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--navy2);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .mission-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .mission-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(201,162,39,0.4);
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 20px;
+    }
+    .scripture-block {
+      margin-top: 32px;
+      padding: 22px 26px;
+      border-left: 3px solid var(--gold);
+      background: var(--cream);
+      border-radius: 0 4px 4px 0;
+    }
+    .scripture-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.65;
+    }
+    .scripture-block cite {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── VALUES CARDS ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .value-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 6px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .value-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .value-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+    .value-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .value-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── HISTORY TIMELINE ── */
+    .timeline { margin-top: 48px; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px; top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(201,162,39,0.25);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      z-index: 1;
+    }
+    .timeline-content { padding-top: 6px; }
+    .timeline-year {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── LEADERSHIP ── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .leader-card {
+      text-align: center;
+    }
+    .leader-photo {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--navy2);
+      margin: 0 auto 16px;
+      overflow: hidden;
+      border: 3px solid rgba(201,162,39,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .leader-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .leader-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .leader-role {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--navy);
+      padding: 72px 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-strip h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .cta-strip h2 em { color: var(--gold); font-style: italic; }
+    .cta-strip p { color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 0.95rem; max-width: 400px; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 36px;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-gold:hover { background: var(--gold2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 32px 6vw;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      line-height: 2;
+      border-top: 1px solid rgba(201,162,39,0.12);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .mission-grid { grid-template-columns: 1fr; gap: 36px; }
+      .cta-strip { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">NJ</div>
+    <div class="nav-logo-text">
+      New Jerusalem
+      <span class="nav-logo-sub">Baptist Church</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="give.html" class="nav-give">Give</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About Us</div>
+  <h1>Who We <em>Are</em></h1>
+  <p>New Jerusalem Baptist Church is a community of faith rooted in Wichita Falls, Texas — committed to loving people and letting God do the saving.</p>
+</div>
+
+<!-- MISSION -->
+<section class="section">
+  <div class="mission-grid">
+    <div class="reveal">
+      <div class="mission-photo">
+        <img
+          src="https://static.wixstatic.com/media/01a251_3fbb4b91254f48e99096f64b1d5bab89~mv2_d_1728_1296_s_2.jpg"
+          alt="Inside New Jerusalem Baptist Church"
+          onerror="this.style.display='none'"
+        />
+        <div class="mission-photo-placeholder">✝ New Jerusalem Baptist Church</div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.12s">
+      <div class="tag">Our Mission</div>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Carrying Out the<br>Mandate of <em>Jesus</em></h2>
+      <p class="body-text">
+        The mission and purpose of New Jerusalem Baptist Church is to carry out the mandate of Jesus — to "feed His sheep." We believe in loving every person we encounter and trusting God to transform hearts. Every ministry, every service, every act of service flows from this calling.
+      </p>
+      <div class="scripture-block">
+        <p>"Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you."</p>
+        <cite>— Matthew 28:19–20</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section-alt">
+  <div class="reveal">
+    <div class="tag">What We Believe</div>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Our Core <em>Values</em></h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal" style="transition-delay:0.05s">
+      <div class="value-icon">✝</div>
+      <div class="value-title">Christ-Centered</div>
+      <div class="value-desc">Jesus is the foundation of everything we do — our worship, our outreach, and our community life.</div>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.1s">
+      <div class="value-icon">💛</div>
+      <div class="value-title">Radical Welcome</div>
+      <div class="value-desc">We believe every person deserves to feel seen, loved, and at home — no matter where they come from.</div>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.15s">
+      <div class="value-icon">📖</div>
+      <div class="value-title">Biblical Truth</div>
+      <div class="value-desc">Scripture is our guide. We teach the Word faithfully and apply it to everyday life.</div>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.2s">
+      <div class="value-icon">🌍</div>
+      <div class="value-title">Community Service</div>
+      <div class="value-desc">Faith without works is incomplete. We actively serve the Wichita Falls community through our ministries.</div>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.25s">
+      <div class="value-icon">🙏</div>
+      <div class="value-title">Prayer & Worship</div>
+      <div class="value-desc">We are a house of prayer. Worship and intercession are at the heart of who we are.</div>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.3s">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Fellowship</div>
+      <div class="value-desc">We do life together — celebrating victories, carrying burdens, and growing as one body in Christ.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="section section-cream">
+  <div class="reveal">
+    <div class="tag">Our Story</div>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">A History of <em>Faith</em></h2>
+    <p class="body-text">For decades, New Jerusalem Baptist Church has been a pillar of the Wichita Falls community — growing, adapting, and always staying rooted in the Gospel.</p>
+  </div>
+  <div class="timeline reveal" style="transition-delay:0.1s">
+    <div class="timeline-item">
+      <div class="timeline-dot">EST</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Founding</div>
+        <div class="timeline-title">New Jerusalem is Established</div>
+        <div class="timeline-desc">A small group of believers gathered with a shared vision: to build a church that truly loved its community and carried the Gospel of Jesus Christ.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">✝</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Growth</div>
+        <div class="timeline-title">Expanding Our Ministries</div>
+        <div class="timeline-desc">As the congregation grew, so did our outreach. Ministries were formed to serve youth, seniors, families, and the broader Wichita Falls community.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🏘</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Community</div>
+        <div class="timeline-title">Borton Street Home</div>
+        <div class="timeline-desc">We settled at 1420 Borton St — a home base from which we continue to serve, worship, and welcome all who come through our doors.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">▶</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Today</div>
+        <div class="timeline-title">Growing in Faith & Reach</div>
+        <div class="timeline-desc">With 15+ active ministries, weekly worship services, and an online presence reaching beyond Wichita Falls, NJBC continues to love people and let God save them.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section">
+  <div class="reveal">
+    <div class="tag">Leadership</div>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Those Who <em>Serve</em> You</h2>
+    <p class="body-text">Our pastoral and associate leadership are committed to shepherding this congregation with humility, wisdom, and love.</p>
+  </div>
+  <div class="leadership-grid">
+    <div class="leader-card reveal" style="transition-delay:0.05s">
+      <div class="leader-photo">✝</div>
+      <div class="leader-name">Senior Pastor</div>
+      <div class="leader-role">Lead Pastor</div>
+    </div>
+    <div class="leader-card reveal" style="transition-delay:0.1s">
+      <div class="leader-photo">📖</div>
+      <div class="leader-name">Associate Minister</div>
+      <div class="leader-role">Associate Pastor</div>
+    </div>
+    <div class="leader-card reveal" style="transition-delay:0.15s">
+      <div class="leader-photo">🎵</div>
+      <div class="leader-name">Minister of Music</div>
+      <div class="leader-role">Worship Leader</div>
+    </div>
+    <div class="leader-card reveal" style="transition-delay:0.2s">
+      <div class="leader-photo">🌟</div>
+      <div class="leader-name">Youth Director</div>
+      <div class="leader-role">Youth Ministry</div>
+    </div>
+  </div>
+  <p class="body-text reveal" style="margin-top:28px;font-size:0.85rem;transition-delay:0.25s">
+    To learn more about our full pastoral team, <a href="https://www.njbcwf.org/pastor" style="color:var(--gold);font-weight:600;">visit the Pastors page →</a>
+  </p>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="reveal">
+    <h2>Ready to Join Our <em>Family?</em></h2>
+    <p>We'd love to meet you. Come as you are — all are welcome at New Jerusalem Baptist Church.</p>
+  </div>
+  <a href="index.html#contact" class="btn-gold reveal" style="transition-delay:0.1s">Plan Your Visit →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.8);">New Jerusalem Baptist Church</strong><br>
+  1420 Borton St · Wichita Falls, TX 76306 · <a href="tel:9407672067">(940) 767-2067</a> · <a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a><br>
+  <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="about.html">About</a> &nbsp;·&nbsp; <a href="events.html">Events</a> &nbsp;·&nbsp; <a href="sermons.html">Sermons</a> &nbsp;·&nbsp; <a href="give.html">Give</a><br><br>
+  © 2025 New Jerusalem Baptist Church. All Rights Reserved.
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

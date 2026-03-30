@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header::before { content: 'HELLO'; }
+
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+    /* Info list */
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 22px; margin: 32px 0; }
+    .info-item { display: flex; gap: 14px; align-items: flex-start; }
+    .info-icon { width: 42px; height: 42px; flex-shrink: 0; background: var(--light); border: 1px solid var(--gold-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .info-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .info-value { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+    .info-value a { color: var(--gold); text-decoration: none; }
+    .info-value a:hover { text-decoration: underline; }
+
+    /* Service times card */
+    .times-card { background: var(--navy); border-radius: 8px; padding: 28px 28px; margin-top: 28px; }
+    .times-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+    .time-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
+    .time-row:last-child { border-bottom: none; }
+    .time-label { color: rgba(255,255,255,0.6); }
+    .time-val   { color: var(--gold); font-weight: 600; font-size: 0.82rem; }
+
+    /* Contact Form */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px;
+      font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text);
+      background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-notice { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .form-success { display: none; padding: 18px 20px; background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.3); border-radius: 6px; color: #1a7a45; font-size: 0.88rem; }
+    .form-success.show { display: block; }
+
+    /* Map */
+    .map-block { margin-top: 64px; }
+    .map-frame { width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .map-frame iframe { width: 100%; height: 100%; border: none; }
+
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+  <h1>Get In <em>Touch</em></h1>
+  <p>We'd love to hear from you. Whether you have a question, need prayer, or want to plan your first visit — reach out anytime.</p>
+</div>
+
+<section class="section">
+  <div class="contact-layout">
+
+    <!-- LEFT: Info -->
+    <div class="reveal">
+      <span class="tag">Find Us</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">We're Here <em>For You</em></h2>
+      <p class="body-text">Our doors — and our hearts — are always open. Contact us by phone, email, or come visit in person any Sunday. No appointment needed.</p>
+
+      <ul class="info-list">
+        <li class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Address</div>
+            <div class="info-value">1420 Borton St<br>Wichita Falls, TX 76306</div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Phone</div>
+            <div class="info-value"><a href="tel:9407672067">(940) 767-2067</a></div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a></div>
+          </div>
+        </li>
+        <li class="info-item">
+          <div class="info-icon">▶</div>
+          <div>
+            <div class="info-label">Watch Online</div>
+            <div class="info-value"><a href="http://www.youtube.com/@NJBCWF" target="_blank">youtube.com/@NJBCWF</a></div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="times-card">
+        <h4>Service Times</h4>
+        <div class="time-row"><span class="time-label">Sunday School</span><span class="time-val">9:30 AM</span></div>
+        <div class="time-row"><span class="time-label">Morning Worship</span><span class="time-val">11:00 AM Sun</span></div>
+        <div class="time-row"><span class="time-label">Bible Study</span><span class="time-val">7:00 PM Wed</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="reveal" style="transition-delay:0.12s">
+      <span class="tag">Send a Message</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">We'd Love to <em>Hear from You</em></h2>
+
+      <div id="formSuccess" class="form-success">
+        ✅ Thank you for reaching out! We'll be in touch with you soon. God bless you.
+      </div>
+
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required placeholder="Your first name" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Your last name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(940) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="">Select a topic...</option>
+            <option>General Inquiry</option>
+            <option>Planning a Visit</option>
+            <option>Prayer Request</option>
+            <option>Membership</option>
+            <option>Ministry Information</option>
+            <option>Giving / Donations</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+        </div>
+        <p class="form-notice">
+          This form sends your message to the church office. For urgent matters please call <a href="tel:9407672067" style="color:var(--gold);">(940) 767-2067</a> directly.
+          <!-- TO MAKE THIS FORM ACTUALLY SEND EMAILS:
+               Option 1 — Use Formspree.io (free):
+                 Change <form> action to: action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+                 Remove onsubmit handler. Sign up at formspree.io.
+               Option 2 — Use Netlify Forms (free with Netlify hosting):
+                 Add: netlify to <form> attributes, name="contact" data-netlify="true"
+                 Remove onsubmit handler. Forms are captured automatically.
+          -->
+        </p>
+        <button type="submit" class="btn btn-gold" style="align-self:flex-start;">Send Message →</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- MAP -->
+  <div class="map-block reveal" style="transition-delay:0.2s">
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327!2d-98.5271!3d33.9219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1420+Borton+St%2C+Wichita+Falls%2C+TX+76306!5e0!3m2!1sen!2sus!4v1"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="New Jerusalem Baptist Church — 1420 Borton St, Wichita Falls TX"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    // Simple client-side "success" demo — integrate Formspree or Netlify Forms for real email delivery
+    document.getElementById('formSuccess').classList.add('show');
+    document.getElementById('contactForm').reset();
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>

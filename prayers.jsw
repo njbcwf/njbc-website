@@ -1,0 +1,81 @@
+/**
+ * backend/prayers.jsw
+ *
+ * Backend (server-side) functions for handling prayer request submissions.
+ * The .jsw extension means these functions run on the server —
+ * sensitive logic and data writes stay safe from client manipulation.
+ *
+ * HOW TO USE:
+ * 1. In Velo sidebar → Backend → New File → name it "prayers.jsw"
+ * 2. Paste this entire file
+ */
+
+import wixData from 'wix-data';
+
+/**
+ * submitPrayerRequest
+ * Called from homepage.js on the client side.
+ * Validates and saves the prayer request to the PrayerRequests collection.
+ *
+ * @param {Object} payload - { name, email, request, isAnonymous }
+ * @returns {Promise<Object>} - saved item
+ */
+export async function submitPrayerRequest(payload) {
+  const { name, email, request, isAnonymous } = payload;
+
+  // Server-side validation
+  if (!request || request.trim().length < 5) {
+    throw new Error('Prayer request text is too short.');
+  }
+
+  if (request.trim().length > 2000) {
+    throw new Error('Prayer request is too long (max 2000 characters).');
+  }
+
+  // Build the record
+  const record = {
+    name:          isAnonymous ? 'Anonymous' : (name || 'Anonymous'),
+    email:         email || '',
+    request:       request.trim(),
+    isAnonymous:   isAnonymous || false,
+    submittedDate: new Date(),
+  };
+
+  // Save to CMS — using suppressAuth so anyone can submit
+  // (make sure PrayerRequests collection Write permission = Anyone)
+  const saved = await wixData.insert('PrayerRequests', record, { suppressAuth: true });
+
+  // ── OPTIONAL: Send email notification to pastoral staff ──────────────────
+  // Uncomment the block below and fill in your Wix Triggered Email template ID.
+  // First create a Triggered Email template in the Wix dashboard:
+  //   Automations → Triggered Emails → + New Email
+  //   Add variables: {{requesterName}}, {{requestText}}
+  //
+  // import { triggeredEmails } from 'wix-crm-backend';
+  //
+  // await triggeredEmails.emailContact('YOUR_TEMPLATE_ID', 'PASTOR_CONTACT_ID', {
+  //   variables: {
+  //     requesterName: record.name,
+  //     requestText:   record.request,
+  //   }
+  // });
+  // ─────────────────────────────────────────────────────────────────────────
+
+  return saved;
+}
+
+/**
+ * getPrayerRequests  (Admin use only — wire to a private staff page)
+ * Returns recent prayer requests. Call this from a password-protected
+ * staff page, not from the public homepage.
+ *
+ * @param {number} limit - how many to return (default 20)
+ */
+export async function getPrayerRequests(limit = 20) {
+  const results = await wixData.query('PrayerRequests')
+    .descending('submittedDate')
+    .limit(limit)
+    .find();
+
+  return results.items;
+}

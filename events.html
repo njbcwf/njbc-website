@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header::before { content: 'EVENTS'; }
+
+    /* Filter tabs */
+    .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+    .filter-tab {
+      padding: 8px 20px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: 1px solid var(--border);
+      background: var(--white); color: var(--muted); transition: all 0.2s;
+    }
+    .filter-tab:hover, .filter-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .filter-tab.gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+    /* Event list */
+    .events-list { display: flex; flex-direction: column; gap: 20px; margin-top: 44px; }
+    .event-row {
+      background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+      display: flex; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .event-row:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.09); transform: translateY(-1px); }
+    .event-date-block {
+      flex-shrink: 0; width: 90px;
+      background: var(--navy); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 20px 12px; text-align: center;
+    }
+    .event-month { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .event-day   { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .event-dow   { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .event-body  { padding: 22px 24px; flex: 1; }
+    .event-cat   { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .event-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .event-desc  { font-size: 0.85rem; line-height: 1.7; color: var(--muted); margin-bottom: 12px; }
+    .event-details { display: flex; flex-wrap: wrap; gap: 16px; }
+    .event-detail { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted); }
+    .event-detail span { color: var(--gold); }
+    .event-action { flex-shrink: 0; display: flex; align-items: center; padding: 0 24px 0 0; }
+
+    /* Add event CTA */
+    .add-event-box {
+      background: var(--warm); border: 2px dashed var(--gold-border); border-radius: 8px;
+      padding: 36px 32px; text-align: center; margin-top: 24px;
+    }
+    .add-event-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .add-event-box p  { font-size: 0.88rem; color: var(--muted); margin-bottom: 20px; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .event-row { flex-direction: column; }
+      .event-date-block { flex-direction: row; width: 100%; gap: 10px; justify-content: flex-start; padding: 14px 20px; }
+      .event-action { padding: 0 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Events</div>
+  <h1>Upcoming <em>Events</em></h1>
+  <p>Stay connected with everything happening at New Jerusalem Baptist Church — worship services, ministry meetings, community outreach, and special events.</p>
+</div>
+
+<section class="section">
+  <div class="reveal">
+    <span class="tag">What's Coming Up</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Church <em>Calendar</em></h2>
+    <p class="body-text">All events are held at 1420 Borton St, Wichita Falls, TX 76306 unless otherwise noted. Contact the church office for details on any event.</p>
+
+    <div class="filter-tabs">
+      <div class="filter-tab active" onclick="filterEvents('all', this)">All Events</div>
+      <div class="filter-tab" onclick="filterEvents('worship', this)">Worship</div>
+      <div class="filter-tab" onclick="filterEvents('ministry', this)">Ministry</div>
+      <div class="filter-tab" onclick="filterEvents('community', this)">Community</div>
+      <div class="filter-tab" onclick="filterEvents('special', this)">Special</div>
+    </div>
+  </div>
+
+  <div class="events-list reveal" id="eventsList" style="transition-delay:0.1s">
+
+    <!-- ═══ ADD YOUR EVENTS HERE ═══
+         To add an event, copy one of the event-row blocks below, fill in:
+         - data-category: worship | ministry | community | special
+         - Month abbreviation and day number
+         - Day of week (Mon, Tue, etc.)
+         - Category label, event title, description
+         - Time and location in event-details
+         ═══════════════════════════ -->
+
+    <!-- RECURRING — SUNDAY WORSHIP -->
+    <div class="event-row" data-category="worship">
+      <div class="event-date-block">
+        <div class="event-month">Every</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Sun</div>
+        <div class="event-dow">Weekly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Worship</div>
+        <div class="event-title">Sunday Morning Worship</div>
+        <div class="event-desc">Join us every Sunday for Sunday School at 9:30 AM followed by Morning Worship Service at 11:00 AM. Nursery available for newborns–5 years. Children's Church for ages 6–11.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕐</span> 9:30 AM Sunday School · 11:00 AM Worship</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+          <div class="event-detail"><span>▶</span> Also livestreamed on YouTube</div>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="btn btn-outline" style="white-space:nowrap;">Watch Live</a>
+      </div>
+    </div>
+
+    <!-- RECURRING — WEDNESDAY BIBLE STUDY -->
+    <div class="event-row" data-category="worship">
+      <div class="event-date-block">
+        <div class="event-month">Every</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Wed</div>
+        <div class="event-dow">Weekly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Worship</div>
+        <div class="event-title">Wednesday Bible Study</div>
+        <div class="event-desc">Midweek Bible Study at 7 PM to deepen your knowledge of God's Word and grow with fellow believers. Preceded by Women's Mission and Mighty Men of God at 6 PM.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕖</span> 7:00 PM</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2ND SATURDAY — SILVER FOXES -->
+    <div class="event-row" data-category="ministry">
+      <div class="event-date-block">
+        <div class="event-month">2nd</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Sat</div>
+        <div class="event-dow">Monthly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Ministry</div>
+        <div class="event-title">Silver Foxes — Ages 55+</div>
+        <div class="event-desc">Monthly gathering for our senior members — fellowship, faith, fun, and celebration of the wisdom and vitality of those 55 and older.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕙</span> 10:00 AM</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4TH SATURDAY — FOOD DISTRIBUTION -->
+    <div class="event-row" data-category="community">
+      <div class="event-date-block">
+        <div class="event-month">4th</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Sat</div>
+        <div class="event-dow">Monthly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Community Outreach</div>
+        <div class="event-title">Meals on Wheels &amp; Food/Health/Clothing Distribution</div>
+        <div class="event-desc">On the 4th Saturday of every month, we open our doors to the community — distributing meals, food, health resources, and clothing to those in need in Wichita Falls.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕤</span> 9:30 AM – 11:30 AM</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+          <div class="event-detail"><span>💛</span> Open to the community</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2ND TUESDAY — CANCER SUPPORT -->
+    <div class="event-row" data-category="ministry">
+      <div class="event-date-block">
+        <div class="event-month">2nd</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Tue</div>
+        <div class="event-dow">Monthly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Care Ministry</div>
+        <div class="event-title">Cancer Support Ministry</div>
+        <div class="event-desc">A monthly gathering of hope and healing for cancer survivors and their families — prayer, support, and the strength of community in Christ.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕛</span> 12:00 PM</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3RD THURSDAY — GRIEF MINISTRY -->
+    <div class="event-row" data-category="ministry">
+      <div class="event-date-block">
+        <div class="event-month">3rd</div>
+        <div class="event-day" style="font-size:1.5rem;line-height:1.3;">Thu</div>
+        <div class="event-dow">Monthly</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Care Ministry</div>
+        <div class="event-title">Grief Ministry</div>
+        <div class="event-desc">Walking alongside those experiencing loss with compassion, prayer, and the comfort only Christ can provide. Open to all who are grieving.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕔</span> 5:00 PM</div>
+          <div class="event-detail"><span>📍</span> 1420 Borton St</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER FOR UPCOMING SPECIAL EVENT -->
+    <div class="event-row" data-category="special">
+      <div class="event-date-block">
+        <div class="event-month">ADD</div>
+        <div class="event-day">00</div>
+        <div class="event-dow">Day</div>
+      </div>
+      <div class="event-body">
+        <div class="event-cat">Special Event</div>
+        <div class="event-title">Add Your Next Special Event Here</div>
+        <div class="event-desc">Replace this card with your upcoming special event — revivals, anniversaries, community days, holiday services, and more. Just edit this block with the details.</div>
+        <div class="event-details">
+          <div class="event-detail"><span>🕐</span> Time TBD</div>
+          <div class="event-detail"><span>📍</span> Location TBD</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="add-event-box reveal" style="transition-delay:0.15s">
+    <h3>Have an Event to Add?</h3>
+    <p>Contact the church office to have your ministry event or special announcement added to this page. We update the calendar regularly.</p>
+    <a href="contact.html" class="btn btn-gold">Contact the Church Office</a>
+  </div>
+</section>
+
+<!-- REGULAR SCHEDULE REMINDER -->
+<section class="section section-navy">
+  <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
+    <span class="tag">Every Week Without Exception</span>
+    <div class="gold-bar" style="margin:0 auto 20px;"></div>
+    <h2 class="section-title" style="text-align:center;">Regular Weekly <em>Services</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;margin-top:36px;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:6px;padding:24px 16px;text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">📖</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px;">Sunday School</div>
+        <div style="font-size:0.75rem;color:var(--gold);font-weight:600;">9:30 AM</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:6px;padding:24px 16px;text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">✝</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px;">Morning Worship</div>
+        <div style="font-size:0.75rem;color:var(--gold);font-weight:600;">11:00 AM Sunday</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,39,0.15);border-radius:6px;padding:24px 16px;text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🙏</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px;">Bible Study</div>
+        <div style="font-size:0.75rem;color:var(--gold);font-weight:600;">7:00 PM Wednesday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+<script>
+  function filterEvents(category, el) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.event-row').forEach(row => {
+      if (category === 'all' || row.dataset.category === category) {
+        row.style.display = 'flex';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sermons — New Jerusalem Baptist Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .page-header.dark::before { content: 'WORD'; }
+
+    /* Featured sermon */
+    .featured-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .video-frame {
+      width: 100%; aspect-ratio: 16/9; background: var(--navy2); border-radius: 8px;
+      overflow: hidden; position: relative; cursor: pointer;
+    }
+    .video-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .play-btn {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.35); transition: background 0.2s;
+    }
+    .play-btn:hover { background: rgba(0,0,0,0.5); }
+    .play-circle {
+      width: 68px; height: 68px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      transition: transform 0.2s;
+    }
+    .play-btn:hover .play-circle { transform: scale(1.08); }
+    .sermon-meta { display: flex; flex-wrap: wrap; gap: 14px; margin: 18px 0 24px; }
+    .sermon-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted); }
+    .sermon-meta-item span { color: var(--gold); }
+
+    /* Sermon cards */
+    .sermons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 44px; }
+    .sermon-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; display: flex; flex-direction: column; }
+    .sermon-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .sermon-thumb { width: 100%; aspect-ratio: 16/9; background: var(--navy2); position: relative; overflow: hidden; }
+    .sermon-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sermon-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); }
+    .sermon-thumb-play div { width: 44px; height: 44px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .sermon-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .sermon-card-date  { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .sermon-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 6px; }
+    .sermon-card-speaker { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; }
+    .sermon-card-scripture { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 4px 10px; border: 1px solid var(--gold-border); border-radius: 50px; color: var(--gold); margin-top: auto; }
+
+    /* YouTube CTA */
+    .yt-cta { background: var(--navy); border-radius: 10px; padding: 48px 40px; text-align: center; margin-top: 48px; }
+    .yt-cta h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .yt-cta h3 em { font-style: italic; color: var(--gold); }
+    .yt-cta p  { color: rgba(255,255,255,0.6); font-size: 0.93rem; max-width: 480px; margin: 0 auto 28px; line-height: 1.75; }
+    .yt-logo { font-size: 1.2rem; margin-right: 8px; }
+
+    @media (max-width: 860px) { .featured-wrap { grid-template-columns: 1fr; gap: 32px; } }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-header dark">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Sermons</div>
+  <h1>Sermons &amp;<br><em>Messages</em></h1>
+  <p>Watch and listen to messages from New Jerusalem Baptist Church. All sermons are available on our YouTube channel — subscribe to get notified of new messages every week.</p>
+</div>
+
+<!-- FEATURED -->
+<section class="section">
+  <div class="reveal">
+    <span class="tag">Latest Message</span>
+    <div class="gold-bar"></div>
+  </div>
+  <div class="featured-wrap">
+    <div class="reveal">
+      <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="video-frame">
+        <!-- Replace with actual YouTube thumbnail: https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg -->
+        <div style="width:100%;height:100%;background:var(--navy2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+          <div style="font-size:3rem;">✝</div>
+          <div style="font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,0.4);font-size:0.9rem;letter-spacing:0.1em;">Latest Sermon on YouTube</div>
+        </div>
+        <div class="play-btn">
+          <div class="play-circle">▶</div>
+        </div>
+      </a>
+    </div>
+    <div class="reveal" style="transition-delay:0.12s">
+      <span class="tag">Most Recent</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);">Latest Message from<br><em>New Jerusalem</em></h2>
+      <div class="sermon-meta">
+        <div class="sermon-meta-item"><span>🎤</span> Rev. Anthony Phillips</div>
+        <div class="sermon-meta-item"><span>📅</span> Current Series</div>
+        <div class="sermon-meta-item"><span>📖</span> Watch on YouTube</div>
+      </div>
+      <p class="body-text" style="margin-bottom:24px;">
+        Our messages are recorded live each Sunday and published to YouTube. To watch the latest sermon or browse our full archive, visit our channel. Subscribe so you never miss a message.
+      </p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="btn btn-gold"><span class="yt-logo">▶</span>Watch on YouTube</a>
+        <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="btn btn-outline">Subscribe to Channel</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERMON ARCHIVE PLACEHOLDER -->
+<section class="section section-alt">
+  <div class="reveal">
+    <span class="tag">Message Archive</span>
+    <div class="gold-bar"></div>
+    <h2 class="section-title">Browse Recent <em>Messages</em></h2>
+    <p class="body-text">Add your recent sermon titles, dates, and YouTube video IDs below to build out your sermon archive. Each card links directly to the YouTube video.</p>
+  </div>
+
+  <div class="sermons-grid">
+
+    <!-- SERMON CARD TEMPLATE — duplicate and fill in for each sermon -->
+    <!-- Replace VIDEO_ID with the actual YouTube video ID (the part after ?v= in the URL) -->
+
+    <a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="sermon-card reveal" style="transition-delay:0.05s">
+      <div class="sermon-thumb">
+        <img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Sermon Thumbnail" onerror="this.parentElement.style.background='var(--navy2)';this.style.display='none'" />
+        <div class="sermon-thumb-play"><div>▶</div></div>
+      </div>
+      <div class="sermon-card-body">
+        <div class="sermon-card-date">Add Date Here</div>
+        <div class="sermon-card-title">Add Sermon Title Here</div>
+        <div class="sermon-card-speaker">Rev. Anthony Phillips</div>
+        <span class="sermon-card-scripture">Add Scripture Reference</span>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="sermon-card reveal" style="transition-delay:0.1s">
+      <div class="sermon-thumb">
+        <img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" alt="Sermon Thumbnail" onerror="this.parentElement.style.background='var(--navy2)';this.style.display='none'" />
+        <div class="sermon-thumb-play"><div>▶</div></div>
+      </div>
+      <div class="sermon-card-body">
+        <div class="sermon-card-date">Add Date Here</div>
+        <div class="sermon-card-title">Add Sermon Title Here</div>
+        <div class="sermon-card-speaker">Rev. Anthony Phillips</div>
+        <span class="sermon-card-scripture">Add Scripture Reference</span>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="sermon-card reveal" style="transition-delay:0.15s">
+      <div class="sermon-thumb">
+        <img src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg" alt="Sermon Thumbnail" onerror="this.parentElement.style.background='var(--navy2)';this.style.display='none'" />
+        <div class="sermon-thumb-play"><div>▶</div></div>
+      </div>
+      <div class="sermon-card-body">
+        <div class="sermon-card-date">Add Date Here</div>
+        <div class="sermon-card-title">Add Sermon Title Here</div>
+        <div class="sermon-card-speaker">Rev. Anthony Phillips</div>
+        <span class="sermon-card-scripture">Add Scripture Reference</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- YouTube CTA -->
+  <div class="yt-cta reveal" style="transition-delay:0.2s">
+    <h3>Full Archive on <em>YouTube</em></h3>
+    <p>Every message preached at New Jerusalem is available on our YouTube channel. Browse the full library, subscribe for weekly notifications, and share with friends and family.</p>
+    <a href="http://www.youtube.com/@NJBCWF" target="_blank" class="btn btn-gold" style="font-size:0.85rem;padding:14px 36px;">
+      <span class="yt-logo">▶</span> Visit @NJBCWF on YouTube
+    </a>
+  </div>
+</section>
+
+<!-- LIVESTREAM INFO -->
+<section class="section section-cream">
+  <div class="two-col reveal">
+    <div>
+      <span class="tag">Watch Live</span>
+      <div class="gold-bar"></div>
+      <h2 class="section-title">Join Us <em>Online</em></h2>
+      <p class="body-text">Can't make it in person? Join us live on YouTube every Sunday morning. Morning Worship begins at 11:00 AM. We'd love to worship with you wherever you are.</p>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--muted);">
+          <span style="color:var(--gold);font-size:1.1rem;">📅</span> Every Sunday at 11:00 AM
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--muted);">
+          <span style="color:var(--gold);font-size:1.1rem;">▶</span> <a href="http://www.youtube.com/@NJBCWF" target="_blank" style="color:var(--gold);font-weight:600;text-decoration:none;">youtube.com/@NJBCWF</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--muted);">
+          <span style="color:var(--gold);font-size:1.1rem;">🔔</span> Subscribe for notifications
+        </div>
+      </div>
+    </div>
+    <div class="scripture-block reveal" style="transition-delay:0.12s">
+      <p>"Faith comes from hearing, and hearing through the word of Christ."</p>
+      <cite>— Romans 10:17</cite>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+</body>
+</html>
