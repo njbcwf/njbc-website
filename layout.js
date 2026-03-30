@@ -12,7 +12,7 @@
   if (navEl) navEl.innerHTML = `
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:48px;width:auto;display:block;" />
+    <img src="/images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:48px;width:auto;display:block;" />
     <div class="nav-logo-text">New Jerusalem<span class="nav-logo-sub">Baptist Church · Wichita Falls, TX</span></div>
   </a>
   <ul class="nav-links">
@@ -46,7 +46,6 @@
     document.getElementById('hamburger').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('open');
     });
-  }
 
   /* ── FOOTER ── */
   const footerEl = document.getElementById('site-footer');
@@ -54,7 +53,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:70px;width:auto;display:block;margin-bottom:14px;opacity:0.9;" />
+      <img src="/images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:70px;width:auto;display:block;margin-bottom:14px;opacity:0.9;" />
       <strong>New Jerusalem Baptist Church</strong>
       <p>
         1420 Borton St, Wichita Falls, TX 76306<br>
