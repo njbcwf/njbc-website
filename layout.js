@@ -15,7 +15,7 @@
     navEl.innerHTML = `
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="/images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:48px;width:auto;display:block;" />
+    <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:48px;width:auto;display:block;" />
     <div class="nav-logo-text">New Jerusalem<span class="nav-logo-sub">Baptist Church · Wichita Falls, TX</span></div>
   </a>
   <ul class="nav-links">
