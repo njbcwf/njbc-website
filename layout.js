@@ -64,7 +64,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:70px;width:auto;display:block;margin-bottom:14px;opacity:0.9;" />
+      <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:70px;width:auto;display:block;margin-bottom:14px;opacity:0.9;" />
       <strong>New Jerusalem Baptist Church</strong>
       <p>
         1420 Borton St, Wichita Falls, TX 76306<br>
