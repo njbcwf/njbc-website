@@ -1,15 +1,18 @@
 /**
- * js/layout.js  — Shared nav, footer, and reveal animation
- * Drop <div id="site-nav"></div> at top and <div id="site-footer"></div>
- * at bottom of every page's <body>, then include this script last.
+ * js/layout.js — Shared nav, footer, and scroll reveal
+ * Add <div id="site-nav"></div> at top of <body>
+ * Add <div id="site-footer"></div> at bottom of <body>
+ * Include this script as the last element before </body>
  */
 (function () {
+
   const page = window.location.pathname.split('/').pop() || 'index.html';
   const a = (href) => page === href ? ' class="active"' : '';
 
   /* ── NAV ── */
   const navEl = document.getElementById('site-nav');
-  if (navEl) navEl.innerHTML = `
+  if (navEl) {
+    navEl.innerHTML = `
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="/images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:48px;width:auto;display:block;" />
@@ -43,13 +46,21 @@
   <a href="give.html" class="mm-give">Give →</a>
 </div>`;
 
-    document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('mobileMenu').classList.toggle('open');
     });
 
+    document.querySelectorAll('#mobileMenu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+  }
+
   /* ── FOOTER ── */
   const footerEl = document.getElementById('site-footer');
-  if (footerEl) footerEl.innerHTML = `
+  if (footerEl) {
+    footerEl.innerHTML = `
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -94,13 +105,14 @@
     9:30 AM Sunday School &nbsp;·&nbsp; 11:00 AM Morning Worship &nbsp;·&nbsp; 7:00 PM Wednesday Bible Study
   </div>
 </footer>`;
+  }
 
   /* ── SCROLL REVEAL ── */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
 
 })();
