@@ -43,11 +43,7 @@
       border-bottom: 1px solid rgba(201,162,39,0.25);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo-icon {
-      width: 40px; height: 40px;
-      background: var(--gold);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    }
+    .nav-logo img { height: 48px; width: auto; display: block; }
     .nav-logo-text { color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em; line-height: 1.2; }
     .nav-logo-sub  { font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.18em; color: var(--gold); display: block; text-transform: uppercase; }
 
@@ -266,7 +262,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon"></div>
+    <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" />
     <div class="nav-logo-text">
       New Jerusalem<br>
       <span class="nav-logo-sub">Baptist Church · Wichita Falls, TX</span>
@@ -442,7 +438,7 @@
       </li>
       <li>
         <div class="contact-icon">✉️</div>
-        <div class="contact-detail"><strong>Email</strong><a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a></div>
+        <div class="contact-detail"><strong>Email</strong><a href="/cdn-cgi/l/email-protection#84cacec6c7d3c2c4e3e9e5ede8aae7ebe9"><span class="__cf_email__" data-cfemail="0d43474f4e5a4b4d6a606c6461236e6260">[email&#160;protected]</span></a></div>
       </li>
     </ul>
     <div class="social-row">
@@ -463,8 +459,9 @@
 
 <!-- FOOTER -->
 <footer>
+  <img src="images/NJBC_Logo_3-26-26.png" alt="New Jerusalem Baptist Church" style="height:70px;width:auto;margin:0 auto 16px;display:block;opacity:0.9;" /><br>
   <strong>New Jerusalem Baptist Church</strong><br>
-  1420 Borton St · Wichita Falls, TX 76306 · <a href="tel:9407672067">(940) 767-2067</a> · <a href="mailto:NJBCWF@gmail.com">NJBCWF@gmail.com</a><br><br>
+  1420 Borton St · Wichita Falls, TX 76306 · <a href="tel:9407672067">(940) 767-2067</a> · <a href="/cdn-cgi/l/email-protection#622c282021352422050f030b0e4c010d0f"><span class="__cf_email__" data-cfemail="82ccc8c0c1d5c4c2e5efe3ebeeace1edef">[email&#160;protected]</span></a><br><br>
   <a href="about.html">About</a> &nbsp;·&nbsp;
   <a href="ministries.html">Ministries</a> &nbsp;·&nbsp;
   <a href="sermons.html">Sermons</a> &nbsp;·&nbsp;
@@ -475,7 +472,7 @@
   © 2025 New Jerusalem Baptist Church. All Rights Reserved.
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── Hamburger menu ──
   document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('mobileMenu').classList.toggle('open');
@@ -489,16 +486,4 @@
   });
 
   // ── Scroll reveal ──
-  var reveals = document.querySelectorAll('.reveal');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(function(r) { obs.observe(r); });
-</script>
-</body>
-</html>
+  var
