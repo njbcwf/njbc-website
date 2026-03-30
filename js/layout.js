@@ -22,7 +22,7 @@
     navEl.innerHTML = `
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-mark">NJ</div>
+    <div class="nav-logo-mark">NJBC_Logo_3-26-26.png</div>
     <div class="nav-logo-text">New Jerusalem<span class="nav-logo-sub">Baptist Church</span></div>
   </a>
   <ul class="nav-links">
